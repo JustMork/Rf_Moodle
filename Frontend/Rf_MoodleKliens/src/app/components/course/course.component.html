@@ -1,0 +1,11 @@
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{course.name}}</h5>
+            <p class="card-text">{{course.code}}</p>
+            <button (click)="enroll()" class="btn btn-primary">Enroll</button>
+            <button (click)="unenroll()" class="btn btn-danger">UnEnroll</button>
+            <button routerLink="/course/{{course.id}}/events" class="btn btn-warning">Events</button>
+        </div>
+    </div>
+</div>

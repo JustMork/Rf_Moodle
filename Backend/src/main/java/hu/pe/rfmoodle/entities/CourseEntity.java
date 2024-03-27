@@ -33,7 +33,6 @@ public class CourseEntity extends BaseEntity {
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "courses")
     private Set<UserEntity> users = new HashSet<>();
 
-    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "event_id")
     private Set<EventEntity> events;

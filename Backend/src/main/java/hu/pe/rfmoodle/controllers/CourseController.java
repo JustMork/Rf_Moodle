@@ -72,6 +72,15 @@ public class CourseController {
         return ResponseEntity.status(HttpStatus.OK).body(courseRepository.findAll());
     }
 
+    @GetMapping("{id}")
+    public ResponseEntity <CourseEntity> getCourseById(@PathVariable long id){
+        Optional<CourseEntity> course = courseRepository.findById(id);
+        if(course.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(course.get());
+    }
+
     @GetMapping("{id}/users")
     public ResponseEntity<Set<UserEntity>> listEnrolled(@AuthenticationPrincipal UserEntity authenticatedUser, @PathVariable long id){
         Optional<CourseEntity> oCourse = courseRepository.findById(id);
@@ -80,6 +89,11 @@ public class CourseController {
         }
         CourseEntity course = oCourse.get();
         return ResponseEntity.status(HttpStatus.OK).body(course.getUsers());
+    }
+
+    @GetMapping("/own")
+    public ResponseEntity<Set<CourseEntity>> getOwnCourses(@AuthenticationPrincipal UserEntity authenticatedUser){
+        return ResponseEntity.status(HttpStatus.OK).body(authenticatedUser.getCourses());
     }
 
     @GetMapping("{id}/events")

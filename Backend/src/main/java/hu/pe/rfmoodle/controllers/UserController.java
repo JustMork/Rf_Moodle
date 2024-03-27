@@ -1,5 +1,6 @@
 package hu.pe.rfmoodle.controllers;
 
+import hu.pe.rfmoodle.entities.CourseEntity;
 import hu.pe.rfmoodle.entities.DegreeEntity;
 import hu.pe.rfmoodle.repositiories.DegreeRepository;
 import hu.pe.rfmoodle.repositiories.UserRepository;
@@ -21,6 +22,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @CrossOrigin
@@ -86,10 +88,9 @@ public class UserController {
                         .build()
         );
     }
-    @GetMapping("/courses")
-    public ResponseEntity<?> getOwnCourses(@AuthenticationPrincipal UserEntity authenticatedUser){
-        return ResponseEntity.status(HttpStatus.OK).body(authenticatedUser.getCourses());
+    @GetMapping
+    public ResponseEntity<UserEntity> getAuthenticatedUser(@AuthenticationPrincipal UserEntity authenticatedUser){
+        return ResponseEntity.ok(authenticatedUser);
     }
-
 
 }

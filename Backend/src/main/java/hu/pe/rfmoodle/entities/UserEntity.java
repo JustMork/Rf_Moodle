@@ -30,7 +30,6 @@ public class UserEntity extends BaseEntity implements UserDetails {
     @JoinColumn(name = "degree_id")
     private DegreeEntity degree;
 
-    @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "mycourses",
