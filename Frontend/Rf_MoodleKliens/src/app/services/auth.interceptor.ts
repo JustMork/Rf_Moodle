@@ -8,11 +8,14 @@ import {
 } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { AuthService } from './auth.service';
+import { UserService } from './user.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   constructor(
-    private authService: AuthService) {}
+    private authService: AuthService,
+    private userService: UserService
+        ) {}
 
   intercept(
     request: HttpRequest<any>,
@@ -29,6 +32,20 @@ export class AuthInterceptor implements HttpInterceptor {
       });
     }
     console.log(clonedRequest)
-    return next.handle(clonedRequest);
+    return next.handle(clonedRequest).pipe(
+      catchError((error: HttpErrorResponse) => {
+
+          switch(error.status){
+            case 401:
+            case 500:
+            case 504:
+              console.warn("Interceptor forced a logout due to an error(UNAUTHORIZED or SERVER ERROR)");
+              this.userService.logout();
+          }
+
+        //}
+        return throwError(() => error);
+      })
+    );
   }
 }
