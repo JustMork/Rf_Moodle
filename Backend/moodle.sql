@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2024 at 12:04 AM
+-- Generation Time: Mar 31, 2024 at 12:21 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,7 +39,8 @@ CREATE TABLE `approved_degrees` (
 INSERT INTO `approved_degrees` (`course_id`, `degree_id`) VALUES
 (1, 2),
 (2, 1),
-(3, 1);
+(3, 1),
+(4, 2);
 
 -- --------------------------------------------------------
 
@@ -61,7 +62,8 @@ CREATE TABLE `courses` (
 INSERT INTO `courses` (`credit`, `id`, `code`, `name`) VALUES
 (2, 1, '911', 'Literature'),
 (4, 2, '420', 'Data Structures'),
-(6, 3, '404', 'Networking');
+(6, 3, '404', 'Networking'),
+(6, 4, '101', 'test');
 
 -- --------------------------------------------------------
 
@@ -170,7 +172,9 @@ CREATE TABLE `mycourses` (
 --
 
 INSERT INTO `mycourses` (`course_id`, `user_id`) VALUES
-(1, 2);
+(1, 2),
+(2, 1),
+(4, 2);
 
 -- --------------------------------------------------------
 
@@ -191,8 +195,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`degree_id`, `id`, `name`, `password`, `username`) VALUES
-(1, 1, 'Beeg Tibor', '$2a$10$Mu9gBSm0iUmCS9cVR4SBvOXZNZ.U1GJrgp.F6hq3g1o.exVLASh9O', 'Tibor'),
-(2, 2, 'Smol Tibor', '$2a$10$7oF6rGNnIzfsf6li4CbLIO9OheuTkfTucwetjoNX8VCdLaQ.x75m2', 'Tibor2');
+(1, 1, 'Teszt Elek', '$2a$10$4/HmszWR96smks/MavOtVOp6yF3Lydihct.3kOWKMFuvI9aN/aT0q', 'Test'),
+(2, 2, 'Teszt Tibor', '$2a$10$dnfZA2OKegXQ6jP3UtXSDOrUFmyBVAQbQ572QGuCRew5A0RxOHMbO', 'Test2');
 
 -- --------------------------------------------------------
 
@@ -209,7 +213,7 @@ CREATE TABLE `users_seq` (
 --
 
 INSERT INTO `users_seq` (`next_val`) VALUES
-(101);
+(151);
 
 --
 -- Indexes for dumped tables
