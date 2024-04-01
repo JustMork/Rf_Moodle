@@ -21,7 +21,7 @@ public class CourseEntity extends BaseEntity {
     private String name;
     private int credit;
 
-    @JsonIgnore
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "approved_degrees",
@@ -29,7 +29,6 @@ public class CourseEntity extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "degree_id"))
     private Set<DegreeEntity> approvedDegrees = new HashSet<>();
 
-    @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "courses")
     private Set<UserEntity> users = new HashSet<>();
 

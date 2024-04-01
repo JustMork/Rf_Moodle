@@ -7,6 +7,6 @@ export class User {
     name : string;
     password : string;
     degree : Degree;
-    courses : Set<Course>;
+    //courses : Set<Course>;
 
 }

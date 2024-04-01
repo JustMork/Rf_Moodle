@@ -38,6 +38,7 @@ export class CourseComponent implements OnInit {
 
     this.courseService.getCourseById(courseIdParam).subscribe((course: Course)=>{
       this.course =  course;
+      console.log(course.users);
     });
   }
 

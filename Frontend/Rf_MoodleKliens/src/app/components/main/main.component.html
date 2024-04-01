@@ -1,7 +1,13 @@
 <div class="container mt-5">
     <h1 class="text-center mb-4">All Courses</h1>
+    <button class="btn btn-secondary" (click)="resetCourses()">Show all</button>
+    <ul>
+        <li *ngFor="let degree of degrees">
+            <a class="cursor-pointer " (click)="filterCoursesByDegree(degree)">{{degree.name}}</a>
+        </li>
+    </ul>
     <div class="row">
-        <div class="col-md-4 mb-4" *ngFor="let course of courses">
+        <div class="col-md-4 mb-4" *ngFor="let course of showingCourses">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{course.name}}</h5>
