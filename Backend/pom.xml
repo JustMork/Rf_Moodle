@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>hu.pe</groupId>
 	<artifactId>rfmoodle</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<!-- <version>0.0.1-SNAPSHOT</version> -->
 	<name>rfmoodle</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Demo project for Rf_moodle</description>
 	<properties>
 		<java.version>22</java.version>
 	</properties>
