@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError } from 'rxjs';
 import { Course } from 'src/app/models/course';
+import { MoodleEvent } from 'src/app/models/moodleEvent';
 import { User } from 'src/app/models/user';
 import { CourseService } from 'src/app/services/course.service';
+import { EventService } from 'src/app/services/event.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -16,11 +18,15 @@ export class CourseComponent implements OnInit {
   course: Course = new Course();
   authenticatedUser: User | null;
 
+  eventName : string;
+  eventDescription : string;
+
   constructor(
     private courseService: CourseService,
     private router: Router,
     private route: ActivatedRoute,
     private userService: UserService,
+    private eventService: EventService
   ){}
   ngOnInit(): void {
     let courseIdParam = this.route.snapshot.params['courseId']
@@ -62,6 +68,18 @@ export class CourseComponent implements OnInit {
         this.router.navigate(['/']);
       },
     });
+  }
+
+  createEvent(): void{
+    let moodleEvent : MoodleEvent = new MoodleEvent();
+    moodleEvent.name = this.eventName;
+    moodleEvent.description = this.eventDescription;
+    this.eventService.createEvent(this.course.id, moodleEvent).subscribe({
+      next: () => {
+        this.eventName = "";
+        this.eventDescription = "";
+      },
+    }); 
   }
 
 }

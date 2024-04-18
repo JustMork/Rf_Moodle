@@ -3,6 +3,7 @@
     <div class="row">
         <div class="col-md-4 mb-4" *ngFor="let event of events">
             <div class="card">
+                <button *ngIf="authenticatedUser?.admin" class="btn btn-danger cursor-pointer w-25 fs-5" (click)="deleteEvent(event.id)">X</button>
                 <div class="card-body">
                     <h5 class="card-title">{{event.name}}</h5>
                     <p class="card-text">{{event.description}}</p>

@@ -25,6 +25,7 @@ public class UserEntity extends BaseEntity implements UserDetails {
     private String name;
     @JsonIgnore
     private String password;
+    private boolean isAdmin = false;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "degree_id")

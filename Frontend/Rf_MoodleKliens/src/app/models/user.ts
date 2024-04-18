@@ -7,6 +7,7 @@ export class User {
     name : string;
     password : string;
     degree : Degree;
+    admin : boolean;
     //courses : Set<Course>;
 
 }

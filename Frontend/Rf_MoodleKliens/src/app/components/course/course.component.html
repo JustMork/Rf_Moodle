@@ -12,4 +12,17 @@
             <button routerLink="/course/{{course.id}}/events" class="btn btn-warning">Events</button>
         </div>
     </div>
+    <br>
+    <div class="card" *ngIf="authenticatedUser?.admin">
+        <div class="card-body">
+            <h5 class="card-title">Create an event</h5>
+            <div class="card-text">
+                <input type="text" placeholder="Name" [(ngModel)]="eventName">
+                <br>
+                <textarea style="resize: both;" rows="4" cols="30" placeholder="Description" [(ngModel)]="eventDescription"></textarea>
+                <br>
+                <input type="button" (click)="createEvent()" class="btn btn-primary" value="Create">
+            </div>
+        </div>
+    </div>
 </div>

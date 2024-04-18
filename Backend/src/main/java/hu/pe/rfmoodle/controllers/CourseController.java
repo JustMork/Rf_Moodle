@@ -104,7 +104,8 @@ public class CourseController {
         }
         CourseEntity course = oCourse.get();
 
-        if(!course.getUsers().contains(authenticatedUser)){
+        if(!course.getUsers().contains(authenticatedUser) && !authenticatedUser.isAdmin()){
+
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
         return ResponseEntity.status(HttpStatus.OK).body(course.getEvents());

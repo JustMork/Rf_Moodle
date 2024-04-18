@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2024 at 12:21 AM
+-- Generation Time: Apr 18, 2024 at 10:46 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -154,7 +154,7 @@ CREATE TABLE `events_seq` (
 --
 
 INSERT INTO `events_seq` (`next_val`) VALUES
-(51);
+(151);
 
 -- --------------------------------------------------------
 
@@ -174,7 +174,8 @@ CREATE TABLE `mycourses` (
 INSERT INTO `mycourses` (`course_id`, `user_id`) VALUES
 (1, 2),
 (2, 1),
-(4, 2);
+(2, 152),
+(3, 1);
 
 -- --------------------------------------------------------
 
@@ -187,16 +188,18 @@ CREATE TABLE `users` (
   `id` bigint(20) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `username` varchar(255) DEFAULT NULL
+  `username` varchar(255) DEFAULT NULL,
+  `is_admin` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`degree_id`, `id`, `name`, `password`, `username`) VALUES
-(1, 1, 'Teszt Elek', '$2a$10$4/HmszWR96smks/MavOtVOp6yF3Lydihct.3kOWKMFuvI9aN/aT0q', 'Test'),
-(2, 2, 'Teszt Tibor', '$2a$10$dnfZA2OKegXQ6jP3UtXSDOrUFmyBVAQbQ572QGuCRew5A0RxOHMbO', 'Test2');
+INSERT INTO `users` (`degree_id`, `id`, `name`, `password`, `username`, `is_admin`) VALUES
+(1, 1, 'Teszt Elek', '$2a$10$4/HmszWR96smks/MavOtVOp6yF3Lydihct.3kOWKMFuvI9aN/aT0q', 'Test', 0),
+(2, 2, 'Teszt Tibor', '$2a$10$dnfZA2OKegXQ6jP3UtXSDOrUFmyBVAQbQ572QGuCRew5A0RxOHMbO', 'Test2', 0),
+(1, 152, 'Tibor', '$2a$10$Dm2H6ljMpEus43/i1VU0NewMORCVVDwr1a2/UYo05fL5gEON3.wDW', 'Tibor', 1);
 
 -- --------------------------------------------------------
 
@@ -213,7 +216,7 @@ CREATE TABLE `users_seq` (
 --
 
 INSERT INTO `users_seq` (`next_val`) VALUES
-(151);
+(251);
 
 --
 -- Indexes for dumped tables
