@@ -39,7 +39,6 @@ Before running the project, ensure that the following prerequisites are met:
 3. **Install Frontend Dependencies:**
     - cd Rf_moodle\Frontend\Rf_MoodleKliens
     - npm install
-    - npm install -g @angular/cli
 4. **Start XAMPP:**
    - Start XAMPP and ensure Apache and MySQL servers are running.
    - Open phpMyAdmin.
@@ -51,9 +50,10 @@ Before running the project, ensure that the following prerequisites are met:
 
 1. **Start Backend:**
     - cd Rf_moodle\Backend\target
-    - java -jar rfmoodle-0.0.1-SNAPSHOT.jar
+    - java -jar rfmoodle-3.2.4.jar
 2. **Start Frontend:**
     - cd Rf_moodle\Frontend\Rf_MoodleKliens
     - ng serve
 3. **Access the Website:**
    - Open your preferred web browser and navigate to localhost:4200.
+   - The login credentials for the test accounts should be "Test" for the username - and "test" for the password, or "Test2" for the username - and "test" for the password
