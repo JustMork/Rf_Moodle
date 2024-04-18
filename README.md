@@ -56,4 +56,5 @@ Before running the project, ensure that the following prerequisites are met:
     - ng serve
 3. **Access the Website:**
    - Open your preferred web browser and navigate to localhost:4200.
-   - The login credentials for the test accounts should be "Test" for the username - and "test" for the password, or "Test2" for the username - and "test" for the password
+   - The login credentials for the test accounts should be "Test" for the username - and "test" for the password, or "Test2" for the username - and "test" for the password.
+   - The login credentials for the adminsitrator account is "Tibor" for the username - and "test" for the password.
