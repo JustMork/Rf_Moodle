@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2024 at 10:46 PM
+-- Generation Time: May 07, 2024 at 10:19 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,7 +40,9 @@ INSERT INTO `approved_degrees` (`course_id`, `degree_id`) VALUES
 (1, 2),
 (2, 1),
 (3, 1),
-(4, 2);
+(4, 2),
+(5, 3),
+(6, 3);
 
 -- --------------------------------------------------------
 
@@ -60,10 +62,12 @@ CREATE TABLE `courses` (
 --
 
 INSERT INTO `courses` (`credit`, `id`, `code`, `name`) VALUES
-(2, 1, '911', 'Literature'),
-(4, 2, '420', 'Data Structures'),
-(6, 3, '404', 'Networking'),
-(6, 4, '101', 'test');
+(2, 1, 'VETKMA1243D', 'Discrete Mathematics'),
+(4, 2, 'VEMISAB113AV', 'Data Structures and Algorithms II.'),
+(6, 3, 'VEMIINP154H', 'Computer Networks I.'),
+(6, 4, 'VEMIMAB123MF', 'Mathematical Analysis II.'),
+(3, 5, 'VEGTGAB144A', 'Corporate Economics'),
+(2, 6, 'VEGTSCB244K', 'Accounting Skills');
 
 -- --------------------------------------------------------
 
@@ -99,7 +103,8 @@ CREATE TABLE `degrees` (
 
 INSERT INTO `degrees` (`id`, `name`) VALUES
 (1, 'IT'),
-(2, 'Linguist');
+(2, 'Mathematics'),
+(3, 'Economy and management');
 
 -- --------------------------------------------------------
 
@@ -175,7 +180,9 @@ INSERT INTO `mycourses` (`course_id`, `user_id`) VALUES
 (1, 2),
 (2, 1),
 (2, 152),
-(3, 1);
+(3, 1),
+(5, 202),
+(6, 202);
 
 -- --------------------------------------------------------
 
@@ -199,7 +206,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`degree_id`, `id`, `name`, `password`, `username`, `is_admin`) VALUES
 (1, 1, 'Teszt Elek', '$2a$10$4/HmszWR96smks/MavOtVOp6yF3Lydihct.3kOWKMFuvI9aN/aT0q', 'Test', 0),
 (2, 2, 'Teszt Tibor', '$2a$10$dnfZA2OKegXQ6jP3UtXSDOrUFmyBVAQbQ572QGuCRew5A0RxOHMbO', 'Test2', 0),
-(1, 152, 'Tibor', '$2a$10$Dm2H6ljMpEus43/i1VU0NewMORCVVDwr1a2/UYo05fL5gEON3.wDW', 'Tibor', 1);
+(1, 152, 'Tibor', '$2a$10$Dm2H6ljMpEus43/i1VU0NewMORCVVDwr1a2/UYo05fL5gEON3.wDW', 'Tibor', 1),
+(3, 202, 'Teszt Laci', '$2a$10$2b7cB/m2igSNnPejaPMu7e2sCAfBtvrwi0eZtnm8uBxxL6MeNdzF6', 'Test3', 0);
 
 -- --------------------------------------------------------
 
@@ -216,7 +224,7 @@ CREATE TABLE `users_seq` (
 --
 
 INSERT INTO `users_seq` (`next_val`) VALUES
-(251);
+(301);
 
 --
 -- Indexes for dumped tables
