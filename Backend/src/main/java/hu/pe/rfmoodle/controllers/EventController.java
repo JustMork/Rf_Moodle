@@ -5,11 +5,12 @@ import hu.pe.rfmoodle.entities.EventEntity;
 import hu.pe.rfmoodle.entities.UserEntity;
 import hu.pe.rfmoodle.repositiories.CourseRepository;
 import hu.pe.rfmoodle.repositiories.EventRepository;
-import jdk.jfr.Event;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,8 +26,11 @@ public class EventController {
     private final EventRepository eventRepository;
     @Autowired
     private final CourseRepository courseRepository;
+    @Autowired
+    private SimpMessagingTemplate messagingTemplate;
 
     @PostMapping("/{id}")
+    @SendTo("/topic/createdEvent")
     public ResponseEntity<EventEntity> createEvent(@AuthenticationPrincipal UserEntity authenticatedUser, @PathVariable long id, @RequestBody EventEntity event){
 
         Optional<CourseEntity> oCourse = courseRepository.findById(id);
@@ -49,6 +53,8 @@ public class EventController {
 
         course.getEvents().add(createdEvent);
         courseRepository.save(course);
+
+        messagingTemplate.convertAndSend("/topic/createdEvent", createdEvent);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(createdEvent);
     }
